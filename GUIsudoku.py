@@ -52,7 +52,7 @@ class Grid:
         gap = self.width / 9
         for i in range(self.rows+1):
             if i % 3 == 0 and i != 0:
-                thick = 4
+                thick = 3
             else:
                 thick = 1
             pygame.draw.line(win, (0,0,0), (0, i*gap), (self.width, i*gap), thick)
@@ -112,7 +112,8 @@ class Cube:
         self.selected = False
 
     def draw(self, win):
-        fnt = pygame.font.SysFont("comicsans", 40)
+        #fnt = pygame.font.SysFont("comicsans", 40)
+        fnt = pygame.font.SysFont("arial", 40)
 
         gap = self.width / 9
         x = self.col * gap
@@ -136,10 +137,11 @@ class Cube:
 
 
 def redraw_window(win, board, time, strikes):
-    win.fill((255,255,255))
+    win.fill((200,200,255))
     # Draw time
-    fnt = pygame.font.SysFont("comicsans", 40)
-    text = fnt.render("Time: " + format_time(time), 1, (0,0,0))
+    #fnt = pygame.font.SysFont("comicsans", 40)
+    fnt = pygame.font.SysFont("arial", 30)
+    text = fnt.render("Time: " + format_time(time), 1, (0,100,0))
     win.blit(text, (540 - 160, 560))
     # Draw Strikes
     text = fnt.render("X " * strikes, 1, (255, 0, 0))
@@ -153,7 +155,7 @@ def format_time(secs):
     minute = secs//60
     hour = minute//60
 
-    mat = " " + str(minute) + ":" + str(sec)
+    mat = str(hour) + ":" + str(minute) + ":" + str(sec)
     return mat
 
 
